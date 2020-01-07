@@ -2,6 +2,23 @@
 
 using namespace std;
 
+template <typename T>
+class Archive
+{
+private:
+  T data;
+
+public:
+  Archive(T data) : data{data} {};
+  T data_please(void);
+};
+
+template <typename T>
+T Archive<T>::data_please(void)
+{
+  return this->data;
+}
+
 class Human
 {
 private:
@@ -34,4 +51,6 @@ int main(void)
   // bruno.age = 10;
   cout << bruno.age << endl;
   cout << bruno.get_age() << endl;
+  Archive<string> old("password");
+  cout << old.data_please() << endl;
 }
