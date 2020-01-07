@@ -10,6 +10,7 @@ private:
 public:
   string name;
   int age;
+  int get_age() const { return age; };
   Human(const string &secret, const string &name, const int &age) : secret(secret), age(age), name(name) {}
   ~Human();
   Human &operator+(const int &);
@@ -27,8 +28,10 @@ Human &Human::operator+(const int &num)
 
 int main(void)
 {
-  Human bruno("sersdaf", "Bruno Edoh", 232);
+  const Human bruno("sersdaf", "Bruno Edoh", 232);
   cout << bruno.name << endl;
-  bruno + 20;
+  // bruno + 20;
+  // bruno.age = 10;
   cout << bruno.age << endl;
+  cout << bruno.get_age() << endl;
 }
