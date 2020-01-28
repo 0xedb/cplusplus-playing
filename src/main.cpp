@@ -46,11 +46,9 @@ Human &Human::operator+(const int &num)
 int main(void)
 {
   const Human bruno("sersdaf", "Bruno Edoh", 232);
-  cout << bruno.name << endl;
-  // bruno + 20;
-  // bruno.age = 10;
+  cout << bruno.name << endl; 
   cout << bruno.age << endl;
   cout << bruno.get_age() << endl;
-  Archive<string> old("password");
+  Archive<string> old("password"); 
   cout << old.data_please() << endl;
 }
