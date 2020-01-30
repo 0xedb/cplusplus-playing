@@ -1,54 +1,21 @@
 #include <iostream>
 
-using namespace std;
+using std::cout;
 
-template <typename T>
-class Archive
-{
-private:
-  T data;
+auto do_crazy(int) -> std::string;
 
-public:
-  Archive(T data) : data{data} {};
-  T data_please(void);
-};
+auto callback(int, int (*func)(int)) -> int;
 
-template <typename T>
-T Archive<T>::data_please(void)
-{
-  return this->data;
+int doubler(const int a) {
+  return a * 2;
 }
 
-class Human
-{
-private:
-  string secret;
-
-public:
-  string name;
-  int age;
-  int get_age() const { return age; };
-  Human(const string &secret, const string &name, const int &age) : secret(secret), age(age), name(name) {}
-  ~Human();
-  Human &operator+(const int &);
-};
-
-Human::~Human()
-{
-  cout << "Destructor called\n";
+int main(void) {
+  cout << "hello" << std::endl;
+  cout << callback(50, doubler) << std::endl;
+  return 0;
 }
 
-Human &Human::operator+(const int &num)
-{
-  this->age = this->age + num;
-}
-
-int main(void)
-{
-  const Human bruno("sersdaf", "Bruno Edoh", 232);
-  cout << bruno.name << endl; 
-  cout << bruno.age << endl;
-  cout << bruno.get_age() << endl;
-  Archive<string> old("password"); 
-  cout << old.data_please() << endl;
+auto callback(int a, int (*func)(int)) -> int {
+  return func(a);
 }
