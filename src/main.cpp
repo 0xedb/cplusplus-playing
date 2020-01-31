@@ -2,20 +2,36 @@
 
 using std::cout;
 
-auto do_crazy(int) -> std::string;
+template <typename T>
+struct Node
+{
+  T data;
+  T *next;
+};
 
-auto callback(int, int (*func)(int)) -> int;
+template <typename T>
+class SinglyLinkedList
+{
+private:
+  Node<T> *head;
 
-int doubler(const int a) {
-  return a * 2;
+public:
+  SinglyLinkedList();
+  void insert(T&);
+};
+
+template <class T>
+void SinglyLinkedList<T>::insert(T& data)
+{
 }
 
-int main(void) {
-  cout << "hello" << std::endl;
-  cout << callback(50, doubler) << std::endl;
+template<class T>
+SinglyLinkedList<T>::SinglyLinkedList() {
+  head = new Node<T>{};
+}
+
+int main(void)
+{
+SinglyLinkedList<std::string> sll;
   return 0;
-}
-
-auto callback(int a, int (*func)(int)) -> int {
-  return func(a);
 }
