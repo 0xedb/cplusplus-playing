@@ -1,37 +1,16 @@
 #include <iostream>
 
-using std::cout;
+using namespace std;
 
-template <typename T>
-struct Node
-{
-  T data;
-  T *next;
-};
-
-template <typename T>
-class SinglyLinkedList
-{
-private:
-  Node<T> *head;
-
-public:
-  SinglyLinkedList();
-  void insert(T&);
-};
-
-template <class T>
-void SinglyLinkedList<T>::insert(T& data)
-{
+void callback(int x, int (*fn)(int)) {
+  cout << fn(x) << endl;
 }
 
-template<class T>
-SinglyLinkedList<T>::SinglyLinkedList() {
-  head = new Node<T>{};
+int func(int b) {
+  return b * 2;
 }
 
-int main(void)
-{
-SinglyLinkedList<std::string> sll;
+int main(void) { 
+  callback(20, func);
   return 0;
 }
