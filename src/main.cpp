@@ -1,4 +1,5 @@
 #include <iostream>
+#include <forward_list>
 
 using namespace std;
 
@@ -44,4 +45,18 @@ int main(void)
   ll.add_to_front(30);
   ll.add_to_front(29);
   ll.traverse();
+
+  cout << "*****\n"
+       << endl;
+
+  // standard implementation
+  forward_list<int>
+      sll;
+  sll.push_front(1);
+  sll.push_front(30);
+  sll.push_front(29);
+  for (auto i = sll.cbegin(); i != sll.cend(); i++)
+  {
+    cout << *i << endl;
+  }
 }
