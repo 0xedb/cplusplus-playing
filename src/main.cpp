@@ -1,5 +1,6 @@
 #include <iostream>
 #include <forward_list>
+#include <map>
 
 using namespace std;
 
@@ -59,4 +60,14 @@ int main(void)
   {
     cout << *i << endl;
   }
+
+  cout << "*****\n"
+       << endl;
+
+  map<string, int> mp;
+  mp["first"] = 1;
+  mp["second"] = 2;
+  mp["third"] = 3;
+
+  cout << mp.find("second") << endl;
 }
