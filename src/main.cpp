@@ -1,5 +1,13 @@
 #include <iostream>
 
+class W
+{
+
+public:
+  int a;
+  explicit W(int a) : a{a} {}
+};
+
 class B
 {
 private:
@@ -31,4 +39,6 @@ int main(void)
   B b(-3);
   b = a;
   std::cout << b.getAmount() << "\n";
+  W w {40};
+  std::cout << w.a << "\n";
 }
