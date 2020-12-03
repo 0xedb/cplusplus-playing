@@ -1,44 +1,49 @@
 #include <iostream>
+#include <thread>
+#include <vector>
+#include <unordered_map>
 
-class W
-{
+using namespace std; 
+using vec = vector<int>; 
+using mp = unordered_map<char, vec>;
 
-public:
-  int a;
-  explicit W(int a) : a{a} {}
-};
+void say(char from, char to) {
+  cout << "from " << from << " to " << to << '\n';
+}
 
-class B
-{
-private:
-  double amount;
 
-public:
-  B(double amount = 0.0) : amount{amount} {}
-  double getAmount()
-  {
-    return amount;
+void toh(int n, char from, char via, char to, mp& seen) {
+  if(n == 1) {
+    say(from, to);
+    seen[to].push_back(seen[from].back());
+    seen[from].pop_back();
+  } else {
+    toh(n - 1, from, to, via, seen);
+    say(from, to);
+
+    seen[to].push_back(seen[from].back());
+    seen[from].pop_back();
+    toh(n - 1, via, from, to, seen);
   }
-};
-class A
-{
-private:
-  int amount;
+}
 
-public:
-  A(int amount = 0) : amount{amount} {};
-  operator B()
-  {
-    return B(amount * 2);
-  }
-};
 
-int main(void)
-{
-  A a(-45);
-  B b(-3);
-  b = a;
-  std::cout << b.getAmount() << "\n";
-  W w {40};
-  std::cout << w.a << "\n";
+int main() { 
+vec A {5, 4, 3, 2, 1}, B {}, C {};
+
+mp seen {
+  {'a', A}, 
+  {'b', B},
+  {'c', C}
+  };
+
+
+  toh(seen['a'].size(), 'a', 'b', 'c', seen);
+
+  // after
+  cout << "\n\n\n";
+  cout << "Ans:: ";
+  for(const auto i : seen['c'])
+  cout << i << '\t';
+  cout << '\n';
 }
